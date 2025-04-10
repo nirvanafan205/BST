@@ -2,19 +2,27 @@ public class Driver
 {
     public static void main(String[] args) 
     {
-        // create AVL tree
+        System.out.println("AVL Tree");
         AVL<Integer> avlTree = new AVL<>();
 
-        // insert  nodes
         avlTree.insert(5);
         avlTree.insert(9);
         avlTree.insert(7);
         avlTree.insert(15);
 
-        // print tree
         avlTree.printAVL();
+        avlTree.heightAVL(7);
 
-        // print the height of node 7
-        avlTree.heightAVL(7);  
+        System.out.println("-------------------\n");
+
+        System.out.println("Splay Tree");
+        Splay<Integer> splayTree = new Splay<>();
+
+        splayTree.insert(5);
+        splayTree.insert(9);
+        splayTree.insert(7);
+        splayTree.insert(15);
+
+        splayTree.printSplay();
     }
 }
