@@ -21,7 +21,9 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 	public void insert(E item) 
 	{
 		Node newNode = bstInsert(item);
-		if (newNode != null) {
+
+		if(newNode != null) 
+		{
 			splay(newNode);
 		}
 	}
@@ -35,6 +37,7 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 		}
 
 		Node current = root;
+
 		Node parent = null;
 
 		while(current != null) 
@@ -54,7 +57,7 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 
 			else 
 			{
-				return null; // duplicate
+				return null;
 			}
 		}
 
@@ -63,7 +66,7 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 		if(item.compareTo(parent.data) < 0) 
 		{
 			parent.left = newNode;
-		}
+		} 
 
 		else 
 		{
@@ -94,7 +97,7 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 					rotateLeft(parent);
 				}
 
-			}
+			} 
 
 			else 
 			{
@@ -115,8 +118,7 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 				} 
 
 				// Zig-Zag
-				else 
-				{
+				else{
 					if(xIsLeft && !pIsLeft) 
 					{
 						rotateRight(parent);
@@ -136,7 +138,6 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 	private void rotateLeft(Node x) 
 	{
 		Node y = x.right;
-
 		if(y == null) return;
 		x.right = y.left;
 
@@ -146,10 +147,11 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 		}
 
 		y.parent = x.parent;
+
 		if(x.parent == null) 
 		{
 			root = y;
-		} 
+		}
 
 		else if(x == x.parent.left) 
 		{
@@ -187,7 +189,7 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 		else if (x == x.parent.right) 
 		{
 			x.parent.right = y;
-		}
+		} 
 
 		else 
 		{
@@ -215,6 +217,7 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 	private int nodeHeight(Node n) 
 	{
 		if (n == null) return -1;
+
 		return 1 + Math.max(nodeHeight(n.left), nodeHeight(n.right));
 	}
 
@@ -234,4 +237,19 @@ public class Splay<E extends Comparable<E>> implements SplayTree<E>
 	{
 		return nodeHeight(root);
 	}
+
+	// print in ascending order
+	public void printRoot() 
+	{
+		if (root == null) 
+		{
+			System.out.println("The splay tree is empty.");
+		} 
+
+		else 
+		{
+			System.out.println("the root contains: " + root.data);
+		}
+	}
 }
+
